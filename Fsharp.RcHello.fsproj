@@ -11,6 +11,9 @@ SPDX-License-Identifier: EPL-2.0
 
   <ItemGroup>
     <Compile Include="Program.fs" />
+    <EmbeddedResource Include="Files/greetings.txt">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

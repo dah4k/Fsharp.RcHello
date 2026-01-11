@@ -3,11 +3,20 @@
 
 module Fsharp.RcHello
 
+open System.IO
+open System.Reflection
+open System.Text
+open System
+
 let loadEmbeddedFile (pathname: string) : string =
-    $"TODO: loadEmbeddedFile %s{pathname}"
+    let info = Assembly.GetExecutingAssembly().GetName()
+    let name = info.Name
+    use stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"{name}.{pathname.Replace('/', '.')}")
+    use streamReader = new StreamReader(stream, Encoding.UTF8)
+    streamReader.ReadToEnd()
 
 [<EntryPoint>]
 let main args =
-    printfn "Hello from F#"
-    printfn $"""%s{loadEmbeddedFile "/path/to/some/file"}"""
+    Console.WriteLine "Hello from F#"
+    Console.Write $"""%s{loadEmbeddedFile "Files/greetings.txt"}"""
     0
