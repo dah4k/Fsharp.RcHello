@@ -3,11 +3,11 @@
 
 module Fsharp.RcHello
 
-let loadEmbeddedFile =
-    "TODO"
+let loadEmbeddedFile (pathname: string) : string =
+    $"TODO: loadEmbeddedFile %s{pathname}"
 
 [<EntryPoint>]
 let main args =
     printfn "Hello from F#"
-    printfn loadEmbeddedFile
+    printfn $"""%s{loadEmbeddedFile "/path/to/some/file"}"""
     0
