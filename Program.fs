@@ -3,7 +3,11 @@
 
 module Fsharp.RcHello
 
+let loadEmbeddedFile =
+    "TODO"
+
 [<EntryPoint>]
 let main args =
     printfn "Hello from F#"
+    printfn loadEmbeddedFile
     0
