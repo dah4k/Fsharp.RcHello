@@ -9,9 +9,9 @@ open System.Text
 open System
 
 let loadEmbeddedFile (pathname: string) : string =
-    let info = Assembly.GetExecutingAssembly().GetName()
-    let name = info.Name
-    use stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"{name}.{pathname.Replace('/', '.')}")
+    let assembly = Assembly.GetExecutingAssembly()
+    let name = assembly.GetName().Name
+    use stream = assembly.GetManifestResourceStream($"{name}.{pathname.Replace('/', '.')}")
     use streamReader = new StreamReader(stream, Encoding.UTF8)
     streamReader.ReadToEnd()
 
